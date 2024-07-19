@@ -1,0 +1,41 @@
+<div class="sidebar">
+    <div class="header">
+        <div class="sidebarHeader">
+            <div class="avatarContainer">
+                <img src="assets/profile-picture.svg">
+            </div>
+            <div class="actionsContainer">
+                <img class="icon" src="assets/status.svg">
+                <img class="icon" src="assets/chat.svg">
+                <img class="icon" src="assets/more.svg">
+            </div>
+        </div>
+        <div class="searchBox">
+            <img class="searchIcon" src="assets/search.svg">
+            <input [(ngModel)]='searchText' class="inputText" type="text" placeholder="Search or start a new chat">
+        </div>
+    </div>
+    <div class="sidebarContent">
+
+        <div class="conversation" *ngFor="let conversation of !searchText? conversations:filteredConversation"
+            (click)="conversationClicked.emit(conversation)">
+
+
+            <div class="picture"><img src="assets/dp.svg"></div>
+            <div class="content">
+                <div class="conversationheader">
+                    <div class="name">{{conversation.name}}</div>
+                    <div class="time">{{conversation.time}}</div>
+                </div>
+                <div class="message">
+                    <div class="tick">
+                        <img *ngIf=!conversation.latestmessageRead src="assets/tick-double.svg">
+                        <img *ngIf=conversation.latestmessageRead src="assets/tick-double-blue.svg">
+                    </div>
+                    <div class="text">{{conversation.latestMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
