@@ -1,0 +1,20 @@
+<div class="background_header"></div>
+<div class="background_body"></div>
+
+<div class="chatContainer">
+  <app-sidebar class="sideBar" (conversationClicked)="onConversationSelected($event)"></app-sidebar>
+  <div class="chat">
+    <div class="chatPlaceHolder" *ngIf="!conversation">
+      <img width="250" src="assets/chat_pg.PNG">
+      <h2>Keep your phone connected</h2>
+      <p>WhatsApp connects your phone to sync messages. To reduce<br>data usage, connect your phone to Wi-Fi.</p>
+      <hr class="seperator">
+      <div class="download">
+        <img src="assets/laptop.svg">
+        <p>WhatsApp is available for Mac. <a class="link" href="#">Get it here.</a></p>
+      </div>
+    </div>
+    <app-chat [conversation]="conversation" *ngIf="conversation"></app-chat>
+  </div>
+</div>
+<router-outlet></router-outlet>
