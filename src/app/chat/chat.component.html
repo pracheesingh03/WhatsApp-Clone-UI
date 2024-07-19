@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="header">
+        <div class="avatarSection">
+            <div class="picture"><img src="assets/dp.svg"></div>
+            <div class="nameSection">{{conversation.name}}</div>
+        </div>
+        <div class="actionButtons">
+            <img class="icon" src="assets/attachment.svg">
+            <img class="icon" src="assets/more.svg">
+        </div>
+    </div>
+    <div class="body">
+        <div [ngClass]="{'me': message.me, 'you': !message.me}" *ngFor="let message of conversation.messages">
+            <div class="messageContent">
+                {{ message.body }}
+            </div>
+            <div class="time">{{ message.time }}</div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="smileyIcon">
+            <img src="assets/smiley.svg">
+        </div>
+        <div class="text">
+            <textarea (keyup.enter)="submitMessage($event)" placeholder="Message"></textarea>
+        </div>
+        <div class="micIcon">
+            <img src="assets/mic.svg">
+        </div>
+    </div>
+</div>
